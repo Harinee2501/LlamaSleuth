@@ -1,0 +1,23 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+venv/
+.env
+
+# ChromaDB & Data
+chrome_langchain_db/  # Local ChromaDB files (can be large + contain sensitive scraped data)
+scraped_website_db/   # Your new ChromaDB folder
+*.csv                 # Remove if you don't want to commit sample datasets
+
+# Selenium/Bright Data
+chromedriver.exe      # Binary (platform-dependent, others should download their own)
+page.png              # Screenshots (temporary)
+
+# Streamlit
+.streamlit/           # Local Streamlit config/secrets
+
+# OS/Editor
+.DS_Store
+.idea/
+.vscode/
