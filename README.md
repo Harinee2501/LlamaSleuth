@@ -27,35 +27,37 @@
 
 ### Steps
 1. Clone the repository:
-   ```bash
+   ` ```bash ` 
    git clone https://github.com/yourusername/LlamaSleuth.git
    cd NaviQA
 2. Install dependencies:
-   ```bash
+  ` ```bash ` 
    pip install -r requirements.txt
 3. Download AI models:
-   ```bash
+  ` ```bash ` 
    ollama pull llama3
    ollama pull mxbai-embed-large
 4. Place chromedriver.exe in project root
 
-<h3 id="🚀-quick-start">🚀 Quick Start</h3>
-<h2 id="web-interface">Web Interface</h2>
-<p>bash`
-   streamlit run main.py</p>
-<ol>
-<li>Enter a URL in the input box</li>
-<li>Click &quot;Scrape Site&quot;</li>
-<li>Ask questions about the content (e.g., &quot;Is this job posting legitimate?&quot;)</li>
-</ol>
-<p>Programmatic Use
-python
+## 🚀 Quick Start
+
+### Web Interface
+` ```bash ` 
+streamlit run main.py
+1. Enter a URL in the input box</li>
+2. Click &quot;Scrape Site&quot;</li>
+3. Ask questions about the content (e.g., Is this job posting legitimate?)
+
+### Programmatic Use
+` ```python `
 from scrape import scrape_website
-from parse import analyze_content</p>
-<p>content = scrape_website(&quot;<a href="https://example.com">https://example.com</a>&quot;)
-analysis = analyze_content(content, &quot;Summarize key points&quot;)
-print(analysis)</p>
-<p>📂 Project Structure
+from parse import analyze_content
+
+content = scrape_website("https://example.com")
+analysis = analyze_content(content, "Summarize key points")
+print(analysis)
+
+## 📂 Project Structure
 TruthHound/
 ├── .gitignore
 ├── README.md
@@ -68,8 +70,11 @@ TruthHound/
 │   ├── analyze_content()
 │   └── chunk_text()
 └── chromedriver.exe       # Browser automation</p>
-<p>🤖 Tech Stack</p>
-<p>⚠️ Troubleshooting
+
+### 🤖 Tech Stack
+![App Screenshot](page.png)
+
+### ⚠️ Troubleshooting
 Issue	Solution
 ChromeDriver error	Download matching version from here
 Ollama model not found	Run ollama pull llama3
