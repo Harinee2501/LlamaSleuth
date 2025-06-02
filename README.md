@@ -27,16 +27,19 @@
 
 ### Steps
 1. Clone the repository:
-   ` ```bash ` 
+   ```bash 
    git clone https://github.com/yourusername/LlamaSleuth.git
    cd NaviQA
+```
 2. Install dependencies:
-  ` ```bash ` 
+  ```bash  
    pip install -r requirements.txt
+  ```
 3. Download AI models:
-  ` ```bash ` 
+  ```bash
    ollama pull llama3
    ollama pull mxbai-embed-large
+  ```
 4. Place chromedriver.exe in project root
 
 ### 🚀 Quick Start
@@ -89,7 +92,7 @@ TruthHound/
 
 | Issue                 | Solution                                 |
 |-----------------------|------------------------------------------|
-| ChromeDriver error    | Download matching version from [here](https://chromedriver.chromium.org/downloads) |
+| ChromeDriver error    | Download matching version from [here]([https://chromedriver.chromium.org/downloads](https://googlechromelabs.github.io/chrome-for-testing/#stable)) |
 | Ollama model not found | Run `ollama pull llama3`                |
 | Memory issues         | Reduce chunk size in `parse.py`         |
 
