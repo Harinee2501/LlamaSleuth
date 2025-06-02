@@ -11,9 +11,9 @@
 - **User-Friendly UI**: Streamlit dashboard for easy interaction
 
 **Use Cases**:
-- 🚨 Fake job/internship detection
 - 📰 News/article summarization
 - 🔍 Company/product research
+- 🚨 Fake job/internship detection
 
 ---
 
