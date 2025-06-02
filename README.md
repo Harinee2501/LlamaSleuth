@@ -47,7 +47,7 @@ Web Interface
 2. Click "Scrape Site"
 3. Ask questions about the content (e.g., "Is this job posting legitimate?")
 
-### Command Line Usage
+Command Line Usage
    ```python
 from scrape import scrape_website
 from parse import analyze_content
