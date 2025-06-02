@@ -40,15 +40,15 @@
 4. Place chromedriver.exe in project root
 
 ### 🚀 Quick Start
-Web Interface
-   ```bash
+## Web Interface
+   ```bash`
    streamlit run main.py
 1. Enter a URL in the input box
 2. Click "Scrape Site"
 3. Ask questions about the content (e.g., "Is this job posting legitimate?")
 
-Command Line Usage
-   ```python
+## Command Line Usage
+   ```python`
 from scrape import scrape_website
 from parse import analyze_content
 
