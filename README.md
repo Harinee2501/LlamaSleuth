@@ -39,5 +39,39 @@
    ollama pull mxbai-embed-large
 4. Place chromedriver.exe in project root
 
-\\### 🚀 Quick Start \\## Web Interface \\\`\\\`\\\`bash\\\` streamlit run main.py 1\\. Enter a URL in the input box 2\\. Click "Scrape Site" 3\\. Ask questions about the content (e.g., "Is this job posting legitimate?") Programmatic Use python from scrape import scrape\\\_website from parse import analyze\\\_content content = scrape\\\_website("https://example.com") analysis = analyze\\\_content(content, "Summarize key points") print(analysis) 📂 Project Structure TruthHound/ ├── .gitignore ├── README.md ├── requirements.txt ├── main.py # Streamlit interface ├── scrape.py # Web scraping logic │ ├── scrape\\\_website() │ └── clean\\\_content() ├── parse.py # RAG processing │ ├── analyze\\\_content() │ └── chunk\\\_text() └── chromedriver.exe # Browser automation 🤖 Tech Stack ⚠️ Troubleshooting IssueSolution ChromeDriver errorDownload matching version from here Ollama model not foundRun ollama pull llama3 Memory issuesReduce chunk size in parse.py
+<h3 id="🚀-quick-start">🚀 Quick Start</h3>
+<h2 id="web-interface">Web Interface</h2>
+<p>bash`
+   streamlit run main.py</p>
+<ol>
+<li>Enter a URL in the input box</li>
+<li>Click &quot;Scrape Site&quot;</li>
+<li>Ask questions about the content (e.g., &quot;Is this job posting legitimate?&quot;)</li>
+</ol>
+<p>Programmatic Use
+python
+from scrape import scrape_website
+from parse import analyze_content</p>
+<p>content = scrape_website(&quot;<a href="https://example.com">https://example.com</a>&quot;)
+analysis = analyze_content(content, &quot;Summarize key points&quot;)
+print(analysis)</p>
+<p>📂 Project Structure
+TruthHound/
+├── .gitignore
+├── README.md
+├── requirements.txt
+├── main.py                # Streamlit interface
+├── scrape.py              # Web scraping logic
+│   ├── scrape_website()
+│   └── clean_content()
+├── parse.py               # RAG processing
+│   ├── analyze_content()
+│   └── chunk_text()
+└── chromedriver.exe       # Browser automation</p>
+<p>🤖 Tech Stack</p>
+<p>⚠️ Troubleshooting
+Issue	Solution
+ChromeDriver error	Download matching version from here
+Ollama model not found	Run ollama pull llama3
+Memory issues	Reduce chunk size in parse.py</p>
 
