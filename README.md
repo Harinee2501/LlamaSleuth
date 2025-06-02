@@ -39,23 +39,31 @@
    ollama pull mxbai-embed-large
 4. Place chromedriver.exe in project root
 
-## 🚀 Quick Start
+### 🚀 Quick Start
 
-### Web Interface
-` ```bash ` 
+#### ✅ Web Interface
+
+```bash
 streamlit run main.py
-1. Enter a URL in the input box</li>
-2. Click &quot;Scrape Site&quot;</li>
-3. Ask questions about the content (e.g., Is this job posting legitimate?)
+```
 
-### Programmatic Use
-` ```python `
+1. Enter a URL in the input box  
+2. Click "Scrape Site"  
+3. Ask questions about the content (e.g., *Is this job posting legitimate?*)
+
+---
+
+#### 🧠 Programmatic Use
+
+```python
 from scrape import scrape_website
 from parse import analyze_content
 
 content = scrape_website("https://example.com")
 analysis = analyze_content(content, "Summarize key points")
 print(analysis)
+```
+
 
 ## 📂 Project Structure
 ```
