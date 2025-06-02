@@ -58,6 +58,7 @@ analysis = analyze_content(content, "Summarize key points")
 print(analysis)
 
 ## 📂 Project Structure
+```
 TruthHound/
 ├── .gitignore
 ├── README.md
@@ -69,7 +70,9 @@ TruthHound/
 ├── parse.py               # RAG processing
 │   ├── analyze_content()
 │   └── chunk_text()
-└── chromedriver.exe       # Browser automation</p>
+└── chromedriver.exe       # Browser automation
+```
+     
 
 ### 🤖 Tech Stack
 ![App Screenshot](tech.png)
