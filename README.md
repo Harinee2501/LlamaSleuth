@@ -13,7 +13,7 @@
 **Use Cases**:
 - 📰 News/article summarization
 - 🔍 Company/product research
-- 🚨 Fake job/internship detection
+- 🚨 Fake profiles detection
 
 ---
 
