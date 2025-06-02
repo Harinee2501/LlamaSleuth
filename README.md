@@ -35,6 +35,26 @@
    pip install -r requirements.txt
 3. Download AI models:
    ```bash
-  ollama pull llama3
-  ollama pull mxbai-embed-large
-  Place chromedriver.exe in project root
+   ollama pull llama3
+   ollama pull mxbai-embed-large
+4. Place chromedriver.exe in project root
+
+### 🚀 Quick Start
+Web Interface
+   ```bash
+   streamlit run main.py
+1. Enter a URL in the input box
+2. Click "Scrape Site"
+3. Ask questions about the content (e.g., "Is this job posting legitimate?")
+
+### Command Line Usage
+   ```python
+from scrape import scrape_website
+from parse import analyze_content
+
+# Scrape a website
+html_content = scrape_website("https://example.com")
+
+# Analyze with RAG
+answer = analyze_content(html_content, "What are the red flags on this page?")
+print(answer)
