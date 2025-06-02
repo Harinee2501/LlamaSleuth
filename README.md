@@ -47,14 +47,35 @@
 2. Click "Scrape Site"
 3. Ask questions about the content (e.g., "Is this job posting legitimate?")
 
-## Command Line Usage
-   ```python`
+Programmatic Use
+python
 from scrape import scrape_website
 from parse import analyze_content
 
-# Scrape a website
-html_content = scrape_website("https://example.com")
+content = scrape_website("https://example.com")
+analysis = analyze_content(content, "Summarize key points")
+print(analysis)
 
-# Analyze with RAG
-answer = analyze_content(html_content, "What are the red flags on this page?")
-print(answer)
+📂 Project Structure
+TruthHound/
+├── .gitignore
+├── README.md
+├── requirements.txt
+├── main.py                # Streamlit interface
+├── scrape.py              # Web scraping logic
+│   ├── scrape_website()
+│   └── clean_content()
+├── parse.py               # RAG processing
+│   ├── analyze_content()
+│   └── chunk_text()
+└── chromedriver.exe       # Browser automation
+
+🤖 Tech Stack
+
+
+⚠️ Troubleshooting
+Issue	Solution
+ChromeDriver error	Download matching version from here
+Ollama model not found	Run ollama pull llama3
+Memory issues	Reduce chunk size in parse.py
+
