@@ -8,7 +8,6 @@
 ## 🌟 Features
 - **Local Web Scraping**: Selenium + ChromeDriver (no external APIs)
 - **Smart Analysis**: RAG-powered with Ollama (Llama3) and ChromaDB
-- **Offline-First**: Works without internet after initial setup
 - **User-Friendly UI**: Streamlit dashboard for easy interaction
 
 **Use Cases**:
