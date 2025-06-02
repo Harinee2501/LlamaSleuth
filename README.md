@@ -41,9 +41,11 @@
   ```
 4. Place chromedriver.exe in project root
 
-### 🚀 Quick Start
+---
 
-#### ✅ Web Interface
+## 🚀 Quick Start
+
+### ✅ Web Interface
 
 ```bash
 streamlit run main.py
@@ -55,7 +57,7 @@ streamlit run main.py
 
 ---
 
-#### 🧠 Programmatic Use
+### 🧠 Programmatic Use
 
 ```python
 from scrape import scrape_website
@@ -84,10 +86,10 @@ TruthHound/
 ```
      
 
-### 🤖 Tech Stack
+## 🤖 Tech Stack
 ![App Screenshot](tech.png)
 
-### ⚠️ Troubleshooting
+## ⚠️ Troubleshooting
 
 | Issue                 | Solution                                 |
 |-----------------------|------------------------------------------|
