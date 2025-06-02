@@ -78,8 +78,11 @@ TruthHound/
 ![App Screenshot](tech.png)
 
 ### ⚠️ Troubleshooting
-Issue	Solution
-ChromeDriver error	Download matching version from here
-Ollama model not found	Run ollama pull llama3
-Memory issues	Reduce chunk size in parse.py</p>
+
+| Issue                 | Solution                                 |
+|-----------------------|------------------------------------------|
+| ChromeDriver error    | Download matching version from [here](https://chromedriver.chromium.org/downloads) |
+| Ollama model not found | Run `ollama pull llama3`                |
+| Memory issues         | Reduce chunk size in `parse.py`         |
+
 
