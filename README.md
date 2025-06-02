@@ -29,7 +29,7 @@
    ```bash 
    git clone https://github.com/yourusername/LlamaSleuth.git
    cd NaviQA
-```
+   ```
 2. Install dependencies:
   ```bash  
    pip install -r requirements.txt
