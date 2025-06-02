@@ -11,7 +11,6 @@ if st.button("Scrape Site"):
     body_content = extract_body_content(html)
     cleaned_content = clean_body_content(body_content)
     
-    # Store in ChromaDB and get retriever
     retriever = store_in_chromadb(cleaned_content)
     st.session_state.retriever = retriever
     
