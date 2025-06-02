@@ -72,7 +72,7 @@ TruthHound/
 └── chromedriver.exe       # Browser automation</p>
 
 ### 🤖 Tech Stack
-![App Screenshot](page.png)
+![App Screenshot](tech.png)
 
 ### ⚠️ Troubleshooting
 Issue	Solution
