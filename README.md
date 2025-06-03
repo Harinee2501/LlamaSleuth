@@ -13,7 +13,7 @@
 **Use Cases**:
 - 📰 News/article summarization  
 - 🔍 Company/product research  
-- 🚨 Fake profiles and internship detection  
+- 🚨 Fake profile detection  
 - 📚 Study aid – analyze and summarize educational content from websites  
 
 ---
