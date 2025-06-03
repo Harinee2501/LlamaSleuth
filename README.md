@@ -73,7 +73,7 @@ print(analysis)
 
 ## 📂 Project Structure
 ```
-TruthHound/
+NaviQA/
 ├── .gitignore
 ├── README.md
 ├── requirements.txt
