@@ -6,9 +6,10 @@
 ---
 
 ## 🌟 Features
-- **Local Web Scraping**: Selenium + ChromeDriver (no external APIs)
-- **Smart Analysis**: RAG-powered with Ollama (Llama3) and ChromaDB
-- **User-Friendly UI**: Streamlit dashboard for easy interaction
+- 🕸️ **Local Web Scraping**: Selenium + ChromeDriver (no external APIs)
+- 🛡️ **Anti-Block Mechanism**: Bright Data integration for handling CAPTCHAs and IP rotation on protected sites
+- 🧠 **Smart Analysis**: RAG-powered with Ollama (Llama3) and ChromaDB
+- 📊 **User-Friendly UI**: Streamlit dashboard for easy interaction
 
 **Use Cases**:
 - 📰 News/article summarization  
