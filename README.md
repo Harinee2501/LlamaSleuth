@@ -11,9 +11,10 @@
 - **User-Friendly UI**: Streamlit dashboard for easy interaction
 
 **Use Cases**:
-- 📰 News/article summarization
-- 🔍 Company/product research
-- 🚨 Fake profiles detection
+- 📰 News/article summarization  
+- 🔍 Company/product research  
+- 🚨 Fake profiles and internship detection  
+- 📚 Study aid – analyze and summarize educational content from websites  
 
 ---
 
