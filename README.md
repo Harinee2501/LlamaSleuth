@@ -1,25 +1,25 @@
-# 🔍 LlamaSleuth: AI-Powered Web Investigator
+# LlamaSleuth: RAG- Powered Web Scraper
 
 **Uncover hidden insights from any webpage using local AI and RAG technology.**  
 *Detect scams, summarize content, and analyze data.*
 
 ---
 
-## 🌟 Features
-- 🕸️ **Local Web Scraping**: Selenium + ChromeDriver (no external APIs)
-- 🛡️ **Anti-Block Mechanism**: Bright Data integration for handling CAPTCHAs and IP rotation on protected sites
-- 🧠 **Smart Analysis**: RAG-powered with Ollama (Llama3) and ChromaDB
-- 📊 **User-Friendly UI**: Streamlit dashboard for easy interaction
+## Features
+- **Local Web Scraping**: Selenium + ChromeDriver (no external APIs)
+- **Anti-Block Mechanism**: Bright Data integration for handling CAPTCHAs and IP rotation on protected sites
+- **Smart Analysis**: RAG-powered with Ollama (Llama3) and ChromaDB
+- **User-Friendly UI**: Streamlit dashboard for easy interaction
 
 **Use Cases**:
-- 📰 News/article summarization  
-- 🔍 Company/product research  
-- 🚨 Fake profile detection  
-- 📚 Study aid – analyze and summarize educational content from websites  
+- News/article summarization  
+- Company/product research  
+- Fake profile detection  
+- Study aid – analyze and summarize educational content from websites  
 
 ---
 
-## 🛠️ Installation
+## Installation
 
 ### Prerequisites
 - Python 3.9+
@@ -45,9 +45,9 @@
 
 ---
 
-## 🚀 Quick Start
+## Quick Start
 
-### ✅ Web Interface
+### Web Interface
 
 ```bash
 streamlit run main.py
@@ -59,7 +59,7 @@ streamlit run main.py
 
 ---
 
-### 🧠 Programmatic Use
+### Programmatic Use
 
 ```python
 from scrape import scrape_website
@@ -71,7 +71,7 @@ print(analysis)
 ```
 
 
-## 📂 Project Structure
+## Project Structure
 ```
 NaviQA/
 ├── .gitignore
@@ -88,10 +88,10 @@ NaviQA/
 ```
      
 
-## 🤖 Tech Stack
+## Tech Stack
 ![App Screenshot](tech.png)
 
-## ⚠️ Troubleshooting
+## Troubleshooting
 
 | Issue                 | Solution                                 |
 |-----------------------|------------------------------------------|
