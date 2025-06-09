@@ -2,22 +2,21 @@ from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.runnables import RunnablePassthrough
 from langchain_ollama.llms import OllamaLLM
 
-def get_rag_chain(retriever):
-    template = """
-    You are a website content analyzer. Use the following context to answer the question.
+def get_rag_chain():
+    template = """Answer using these verified facts:
+{context}
+
+Question: {question}
+Include source snippets in your answer."""
     
-    Context: {context}
-    
-    Question: {parse_description}
-    
-    Provide a detailed summary or extract specific information as requested.
-    """
     prompt = ChatPromptTemplate.from_template(template)
-    
-    model = OllamaLLM(model="llama3.2")
+    model = OllamaLLM(model="llama3")
     
     return (
-        {"context": retriever, "parse_description": RunnablePassthrough()} 
+        {
+            "context": RunnablePassthrough(),
+            "question": RunnablePassthrough()
+        } 
         | prompt 
         | model
     )
