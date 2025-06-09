@@ -13,3 +13,7 @@ rank_bm25
 difflib 
 sqlite3 
 pandas
+
+2. real-time webpage memory with differential updates
+3. self evaluating rag with benchmarking
+4. hugging face deployment

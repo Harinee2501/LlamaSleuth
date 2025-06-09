@@ -10,6 +10,7 @@ from langchain_text_splitters import RecursiveCharacterTextSplitter
 import chromadb
 from hashlib import md5
 from langchain_core.documents import Document
+import torch
 
 # Bright Data configuration
 AUTH = 'brd-customer-hl_69af7f50-zone-scraping_browser1:fscae93ekal6'
@@ -56,16 +57,22 @@ def clean_body_content(body_content):
 def create_hybrid_retriever(chunks, vector_retriever):
     tokenized_corpus = [doc.split() for doc in chunks]
     bm25 = BM25Okapi(tokenized_corpus)
-    reranker = CrossEncoder("cross-encoder/ms-marco-MiniLM-L-6-v2")
+    
+    # CPU-optimized model with smaller max_length
+    reranker = CrossEncoder(
+        "cross-encoder/ms-marco-MiniLM-L-6-v2",
+        device="cpu",
+        max_length=256
+    )
 
     def hybrid_retrieve(query, k=3):
         # Vector Search
         vector_results = vector_retriever.get_relevant_documents(query)
         
-        # Keyword Search
+        # Keyword Search (get more candidates initially)
         tokenized_query = query.split()
         bm25_scores = bm25.get_scores(tokenized_query)
-        top_keyword_indices = np.argsort(bm25_scores)[-k*2:]
+        top_keyword_indices = np.argsort(bm25_scores)[-k*3:]  # Get more candidates for reranking
         keyword_docs = [Document(page_content=chunks[i]) for i in top_keyword_indices]
         
         # Deduplicate
@@ -77,12 +84,23 @@ def create_hybrid_retriever(chunks, vector_retriever):
                 seen_contents.add(content_hash)
                 all_results.append(doc)
 
-        # Rerank
+        # Rerank with BERT
         pairs = [[query, doc.page_content] for doc in all_results]
-        rerank_scores = reranker.predict(pairs)
+        rerank_scores = reranker.predict(pairs, show_progress_bar=False)
 
-        sorted_results = [doc for _, doc in sorted(zip(rerank_scores, all_results), reverse=True)]
-        return sorted_results[:k]
+        # Prepare debug data
+        debug_data = {
+            "query": query,
+            "vector_results": [doc.page_content for doc in vector_results],
+            "keyword_results": [doc.page_content for doc in keyword_docs],
+            "reranked_results": [doc.page_content for doc in all_results],
+            "scores": [float(score) for score in rerank_scores]
+        }
+
+        # Sort by BERT scores
+        sorted_results = [doc for _, doc in sorted(zip(rerank_scores, all_results), key=lambda x: x[0], reverse=True)]
+        
+        return sorted_results[:k], debug_data
 
     return hybrid_retrieve
 
@@ -98,10 +116,10 @@ def store_in_chromadb(cleaned_content, url):
     if url_hash in existing_collections:
         client.delete_collection(url_hash)
 
-    # Split content into chunks
+    # Split content into smaller chunks for CPU
     text_splitter = RecursiveCharacterTextSplitter(
-        chunk_size=1000,
-        chunk_overlap=200,
+        chunk_size=800,  # Reduced from 1000
+        chunk_overlap=150,
         length_function=len
     )
     chunks = text_splitter.split_text(cleaned_content)
