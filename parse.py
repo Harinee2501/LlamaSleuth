@@ -17,7 +17,7 @@ def get_rag_chain():
     ..."""
     
     prompt = ChatPromptTemplate.from_template(template)
-    model = OllamaLLM(model="llama3", temperature=0.3)  # Lower temp for factual answers
+    model = OllamaLLM(model="llama3", temperature=0.3)  
     
     return (
         {

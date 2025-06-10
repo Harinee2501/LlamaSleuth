@@ -5,23 +5,20 @@ import sys
 import asyncio
 import torch
 
-# Configuration
 st.set_page_config(layout="wide")
 if sys.platform.startswith("win"):
     asyncio.set_event_loop_policy(asyncio.WindowsProactorEventLoopPolicy())
 
-# Display hardware info
-st.sidebar.markdown(f"**Running on:** {'GPU 🚀' if torch.cuda.is_available() else 'CPU ⚙️'}")
 
-# App UI
-st.title("🦙 LlamaSleuth - Advanced Web Analyzer")
+
+st.title("🦙 LlamaSleuth ")
 url = st.text_input("Enter a Website URL:", placeholder="https://example.com")
 
 if st.button("Scrape Site"):
     if not url.startswith(('http://', 'https://')):
         st.error("Please enter a valid URL starting with http:// or https://")
     else:
-        with st.spinner("🔍 Scraping the website..."):
+        with st.spinner("Scraping the website..."):
             try:
                 html = scrape_website(url)
                 body_content = extract_body_content(html)
@@ -32,13 +29,13 @@ if st.button("Scrape Site"):
                 if retriever is not None:
                     st.session_state.retriever = retriever
                     st.session_state.content = cleaned_content
-                    st.success("✅ Website scraped successfully!")
+                    st.success(" Website scraped successfully!")
                     with st.expander("View DOM Content"):
                         st.text_area("DOM Content", cleaned_content, height=300)
                 else:
-                    st.error("❌ Failed to initialize retriever. Content may be empty or malformed.")
+                    st.error("Failed to initialize retriever. Content may be empty or malformed.")
             except Exception as e:
-                st.error(f"❌ Scraping failed: {str(e)}")
+                st.error(f"Scraping failed: {str(e)}")
 
 if "retriever" in st.session_state:
     st.divider()
@@ -52,15 +49,13 @@ if "retriever" in st.session_state:
             retriever_fn = st.session_state.get("retriever")
 
             if not callable(retriever_fn):
-                st.error("❌ Retriever is not initialized correctly. Please scrape the website again.")
+                st.error("Retriever is not initialized correctly. Please scrape the website again.")
             else:
                 with st.spinner("Analyzing content..."):
                     try:
-                        # Call retriever - now returns (results, debug_data)
                         results, debug_data = retriever_fn(query)
 
-                        # Retrieval diagnostics
-                        with st.expander("🔍 Retrieval Diagnostics"):
+                        with st.expander("Retrieval Diagnostics"):
                             tab1, tab2, tab3 = st.tabs(["Vector Results", "Keyword Results", "Final Ranking"])
 
                             with tab1:
@@ -78,7 +73,6 @@ if "retriever" in st.session_state:
                                     st.markdown(f"**#{i+1}** (Score: {score:.2f}):")
                                     st.text(doc[:500] + ("..." if len(doc) > 500 else ""))
 
-                        # Final answer
                         rag_chain = get_rag_chain()
                         answer = rag_chain.invoke({
                             "context": "\n\n".join([doc.page_content for doc in results]),
@@ -89,4 +83,4 @@ if "retriever" in st.session_state:
                         st.markdown(answer)
 
                     except Exception as e:
-                        st.error(f"❌ Analysis failed: {str(e)}")
+                        st.error(f" Analysis failed: {str(e)}")

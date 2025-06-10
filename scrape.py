@@ -12,7 +12,6 @@ from hashlib import md5
 from langchain_core.documents import Document
 import torch
 
-# Bright Data configuration
 AUTH = 'brd-customer-hl_69af7f50-zone-scraping_browser1:fscae93ekal6'
 SBR_WS_CDP = f'wss://{AUTH}@brd.superproxy.io:9222'
 
@@ -58,7 +57,6 @@ def create_hybrid_retriever(chunks, vector_retriever):
     tokenized_corpus = [doc.split() for doc in chunks]
     bm25 = BM25Okapi(tokenized_corpus)
     
-    # CPU-optimized model with smaller max_length
     reranker = CrossEncoder(
         "cross-encoder/ms-marco-MiniLM-L-6-v2",
         device="cpu",
@@ -66,13 +64,11 @@ def create_hybrid_retriever(chunks, vector_retriever):
     )
 
     def hybrid_retrieve(query, k=3):
-        # Vector Search
         vector_results = vector_retriever.get_relevant_documents(query)
         
-        # Keyword Search (get more candidates initially)
         tokenized_query = query.split()
         bm25_scores = bm25.get_scores(tokenized_query)
-        top_keyword_indices = np.argsort(bm25_scores)[-k*3:]  # Get more candidates for reranking
+        top_keyword_indices = np.argsort(bm25_scores)[-k*3:]  
         keyword_docs = [Document(page_content=chunks[i]) for i in top_keyword_indices]
         
         # Deduplicate
@@ -84,11 +80,8 @@ def create_hybrid_retriever(chunks, vector_retriever):
                 seen_contents.add(content_hash)
                 all_results.append(doc)
 
-        # Rerank with BERT
         pairs = [[query, doc.page_content] for doc in all_results]
         rerank_scores = reranker.predict(pairs, show_progress_bar=False)
-
-        # Prepare debug data
         debug_data = {
             "query": query,
             "vector_results": [doc.page_content for doc in vector_results],
@@ -97,7 +90,6 @@ def create_hybrid_retriever(chunks, vector_retriever):
             "scores": [float(score) for score in rerank_scores]
         }
 
-        # Sort by BERT scores
         sorted_results = [doc for _, doc in sorted(zip(rerank_scores, all_results), key=lambda x: x[0], reverse=True)]
         
         return sorted_results[:k], debug_data
@@ -105,20 +97,18 @@ def create_hybrid_retriever(chunks, vector_retriever):
     return hybrid_retrieve
 
 def store_in_chromadb(cleaned_content, url):
-    # Create unique collection name based on URL
     url_hash = md5(url.encode()).hexdigest()[:12]
 
-    # Initialize Chroma client
     client = chromadb.PersistentClient(path="./scraped_website_db")
 
-    # Check if collection exists before trying to delete
+
     existing_collections = [col.name for col in client.list_collections()]
     if url_hash in existing_collections:
         client.delete_collection(url_hash)
 
-    # Split content into smaller chunks for CPU
+
     text_splitter = RecursiveCharacterTextSplitter(
-        chunk_size=800,  # Reduced from 1000
+        chunk_size=800,  
         chunk_overlap=150,
         length_function=len
     )
@@ -127,7 +117,7 @@ def store_in_chromadb(cleaned_content, url):
     if not chunks:
         return None
 
-    # Create new collection with the content
+
     vector_store = Chroma.from_texts(
         texts=chunks,
         embedding=OllamaEmbeddings(model="mxbai-embed-large"),
