@@ -95,7 +95,7 @@ NaviQA/
      
 
 ## Tech Stack
-![App Screenshot](tech.png)
+![App Screenshot](stack.png)
 
 ## Core Technologies
 ### 🕷️ **Scraping**  
