@@ -98,16 +98,16 @@ NaviQA/
 ![App Screenshot](stack.png)
 
 ## Core Technologies
-### 🕷️ **Scraping**  
+### **Scraping**  
 - **Playwright** + **Bright Data proxies** (zero CAPTCHAs, randomized delays)  
 
-### 🔍 **Search & Retrieval**  
+### **Search & Retrieval**  
 - Hybrid **BM25** + **mxbai-embed-large** (ChromaDB) + **BERT reranking**  
 
-### 🧠 **LLM**  
+### **LLM**  
 - Local **Llama3 8B** (via **Ollama**) for private inference  
 
-### 🖥️ **UI & Debugging**  
+### **UI & Debugging**  
 - **Streamlit** app with retrieval diagnostics (explainable scoring)  
 
 ## Troubleshooting
